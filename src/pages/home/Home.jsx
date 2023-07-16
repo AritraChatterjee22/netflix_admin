@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import Chart from '../../components/chart/Chart'
 import FeaturedInfo from '../../components/featuredInfo/FeaturedInfo'
 import "./home.css"
-import { userData } from '../../dummyData'
+// import { userData } from '../../dummyData'
 import WidgetSm from '../../components/widgetSm/WidgetSm'
 import WidgetLg from '../../components/widgetLg/WidgetLg'
 import axios from 'axios'
@@ -37,7 +37,10 @@ function Home() {
               "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OWVjYzRkZmNmZTEyMmM5MmM5YzYzNSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4ODkwMzk0MiwiZXhwIjoxNjg5MzM1OTQyfQ.ArHTiNX3-ZLG_HoRYpF_sh6U0cI-4A12_1W2-RdGLJU"
           },
         });
-        res.data.map((item) =>
+        const statsList = res.data.sort(function (a, b){
+          return a._id - b._id;
+        });
+        statsList.map((item) =>
           setUserStats((prev) => [
             ...prev,
             { name: MONTHS[item._id-1], "New User": item.total},
@@ -49,7 +52,6 @@ function Home() {
     };
     getStats();
   },[MONTHS]);
-  console.log(userStats)
 
   return (
     <div className='home'>

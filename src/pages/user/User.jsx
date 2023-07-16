@@ -1,16 +1,16 @@
 import React from 'react'
 import "./user.css"
-import { useParams } from 'react-router-dom';
-import { userRows } from '../../dummyData';
+// import { useParams } from 'react-router-dom';
+// import { userRows } from '../../dummyData';
 import { CalendarToday, LocationSearching, MailOutline, PermIdentity, PhoneAndroid, Publish } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 
 
 function User() {
-  const { id } = useParams();
-  console.log('id:', id);
-  const user = userRows.find(user =>  user.id === parseInt(id));
-  console.log('user:', user);
+  // const { id } = useParams();
+  // console.log('id:', id);
+  // const user = userRows.find(user =>  user.id === parseInt(id));
+  // console.log('user:', user);
   return (
     <div className='user'>
       <div className='userTitleContainer'>
@@ -24,7 +24,7 @@ function User() {
           <div className='userShowTop'>
             <img src='https://i1.sndcdn.com/artworks-QLH5FyzoNynvfQmg-EICzDA-t500x500.jpg' className='userShowImg'/>
             <div className='userShowTopTitle'>
-              <span className='userShowUsername'>{user.username}</span>
+              <span className='userShowUsername'>Eren Yeager</span>
               <span className='userShowUserTitle'>Software Engineer</span>
             </div>
           </div>

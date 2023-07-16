@@ -8,6 +8,7 @@ import {
   LocalMall,
   Mail,
   PersonOutline,
+  PlayCircleOutlined,
   RateReview,
   ReportGmailerrorred,
   Textsms,
@@ -67,13 +68,13 @@ function Sidebar() {
                 Users
               </li>
             </Link>
-            <Link to='/products' className='link'>
+            <Link to='/movies' className='link'>
               <li
                 className={`sidebarListItem ${activeItem === 'Products' ? 'active' : ''}`}
                 onClick={() => handleItemClick('Products')}
               >
-                <LocalMall className='sidebarIcon' />
-                Products
+                <PlayCircleOutlined className='sidebarIcon' />
+                Movies
               </li>
             </Link>
             <li
