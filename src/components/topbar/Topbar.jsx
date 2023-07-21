@@ -1,9 +1,20 @@
-import React from 'react'
-import "./topbar.css"
-import {Language, NotificationsNone, Settings} from '@mui/icons-material';
-
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Language, Logout, NotificationsNone, Settings } from '@mui/icons-material';
+import { AuthContext } from '../../context/authContext/AuthContext';
+import { logoutStart } from '../../context/authContext/AuthActions';
+import './topbar.css';
 
 function Topbar() {
+  const navigate = useNavigate(); // Use useNavigate hook
+  const { user, dispatch } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    dispatch(logoutStart());
+    localStorage.removeItem('user');
+    navigate('/login'); // Use navigate instead of history.push
+  };
+
   return (
     <div className='topbar'>
       <div className='topbarWrapper'>
@@ -12,21 +23,26 @@ function Topbar() {
         </div>
         <div className='topRight'>
           <div className='topbarIconContainer'>
-            <NotificationsNone/>
+            <NotificationsNone />
             <span className='topIconBadge'>2</span>
           </div>
           <div className='topbarIconContainer'>
-            <Language/>
+            <Language />
             <span className='topIconBadge'>2</span>
           </div>
           <div className='topbarIconContainer'>
-            <Settings/>
+            <Logout onClick={handleLogout} />
           </div>
-          <img src='https://e1.pxfuel.com/desktop-wallpaper/88/629/desktop-wallpaper-hackerman-posted-by-ryan-anderson-hackerman.jpg' className='topAvatar' />
+          <img
+            src='https://e1.pxfuel.com/desktop-wallpaper/88/629/desktop-wallpaper-hackerman-posted-by-ryan-anderson-hackerman.jpg'
+            className='topAvatar'
+            alt='User Avatar'
+          />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Topbar
+export default Topbar;
+
