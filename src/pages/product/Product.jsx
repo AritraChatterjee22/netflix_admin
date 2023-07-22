@@ -1,15 +1,16 @@
-import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import "./product.css"
-import { Publish } from '@mui/icons-material'
-
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import "./product.css";
+import { Publish } from '@mui/icons-material';
 
 function Product() {
   const location = useLocation();
   const movie = location.state?.movie;
+
   if (!movie) {
-    return <div>Loading...</div>; // You can show a loading state here or redirect to another page
+    return <div>Loading...</div>;
   }
+
   return (
     <div className='product'>
       <div className='productTitleContainer'>
@@ -27,19 +28,19 @@ function Product() {
           <div className='productInfoBottom'>
             <div className='productInfoItem'>
               <span className='productInfoKey'>id:</span>
-              <span className='productInfoValue'>120</span>
+              <span className='productInfoValue'>{movie._id}</span>
             </div>
             <div className='productInfoItem'>
-              <span className='productInfoKey'>sales:</span>
-              <span className='productInfoValue'>5120</span>
+              <span className='productInfoKey'>genre:</span>
+              <span className='productInfoValue'>{movie.genre}</span>
             </div>
             <div className='productInfoItem'>
-              <span className='productInfoKey'>active:</span>
-              <span className='productInfoValue'>yes</span>
+              <span className='productInfoKey'>year:</span>
+              <span className='productInfoValue'>{movie.year}</span>
             </div>
             <div className='productInfoItem'>
-              <span className='productInfoKey'>in stock:</span>
-              <span className='productInfoValue'>No</span>
+              <span className='productInfoKey'>Age limit:</span>
+              <span className='productInfoValue'>{movie.limit}</span>
             </div>
           </div>
         </div>
@@ -47,33 +48,34 @@ function Product() {
       <div className='productBottom'>
         <form className='productForm'>
           <div className='productFormLeft'>
-            <label>Product Name</label>
-            <input type="text" placeholder='Manga Box set' />
-            <label>In Stock</label>
-            <select name='inStock' id='idStock'>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-            <label>Active</label>
-            <select name='active' id='active'>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
+            <label>Movie Title</label>
+            <input type="text" placeholder={movie.title} />
+            <label>Year</label>
+            <input type="text" placeholder={movie.year} />
+            <label>Genre</label>
+            <input type="text" placeholder={movie.genre} />
+            <label>Limit</label>
+            <input type="text" placeholder={movie.limit} />
+            <label>Trailer</label>
+            <input type="file" placeholder={movie.trailer} />
+            <label>Video</label>
+            <input type="file" placeholder={movie.video} />
           </div>
           <div className='productFormRight'>
             <div className='productUpload'>
-              <img src='https://i.ytimg.com/vi/FDIRYGsg6l0/maxresdefault.jpg' className='productUploadImg' />
-              <label for="file">
-                <Publish/>
+              <img src={movie.img} className='productUploadImg' alt='Upload' />
+              <label htmlFor="file">
+                <Publish />
               </label>
-              <input type="file" id="file" style={{display: "none"}} />
+              <input type="file" id="file" style={{ display: "none" }} />
             </div>
             <button className='productButton'>Update</button>
           </div>
         </form>
       </div>
     </div>
-  )
+  );
 }
 
-export default Product
+export default Product;
+

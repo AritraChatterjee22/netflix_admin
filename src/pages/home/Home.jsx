@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import Chart from '../../components/chart/Chart'
-import FeaturedInfo from '../../components/featuredInfo/FeaturedInfo'
-import "./home.css"
-import WidgetSm from '../../components/widgetSm/WidgetSm'
-import WidgetLg from '../../components/widgetLg/WidgetLg'
-import axios from 'axios'
+import React, { useEffect, useMemo, useState } from 'react';
+import Chart from '../../components/chart/Chart';
+import FeaturedInfo from '../../components/featuredInfo/FeaturedInfo';
+import "./home.css";
+import WidgetSm from '../../components/widgetSm/WidgetSm';
+import WidgetLg from '../../components/widgetLg/WidgetLg';
+import axios from 'axios';
 
 function Home() {
   const MONTHS = useMemo(() => [
@@ -53,7 +53,8 @@ function Home() {
       <FeaturedInfo />
       <Chart data={userStats} title="User Analytics" grid dataKey="New Users" />
       <div className='homeWidgets'>
-        <WidgetSm />
+        {/* Pass the token prop to the WidgetSm component */}
+        <WidgetSm token={localStorage.getItem("token")} />
         <WidgetLg />
       </div>
     </div>

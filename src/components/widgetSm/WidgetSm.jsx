@@ -3,12 +3,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import "./widgetSm.css";
 
-function WidgetSm() {
+function WidgetSm({ token }) {
   const [newUsers, setNewUsers] = useState([]);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
     const getNewUsers = async () => {
       try {
         const res = await axios.get("/users?new=true", {
@@ -22,7 +20,7 @@ function WidgetSm() {
       }
     };
     getNewUsers();
-  }, []);
+  }, [token]);
 
   return (
     <div className='widgetSm'>
